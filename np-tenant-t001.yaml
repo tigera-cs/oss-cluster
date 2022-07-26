@@ -1,0 +1,28 @@
+apiVersion: projectcalico.org/v3
+kind: NetworkPolicy
+metadata:
+  name: ingress-t001-webf-idev-webst-dev
+  namespace: t001-webf-idev-webst-dev
+spec:
+  order: 1001
+  types:
+    - Ingress
+  ingress:
+    - action: Allow
+      source:
+        selector: (sec.kubernetes.io/tenant == "t001" && sec.kubernetes.io/env == "int-dev")
+---
+apiVersion: projectcalico.org/v3
+kind: NetworkPolicy
+metadata:
+  name: egress-t001-webf-idev-webst-dev
+  namespace: t001-webf-idev-webst-dev
+spec:
+  order: 1002
+  selector: (sec.kubernetes.io/tenant == "t001" && sec.kubernetes.io/env == "int-dev")
+  types:
+    - Egress
+  egress:
+    - action: Allow
+      destination:
+        selector: (sec.kubernetes.io/tenant == "t001" && sec.kubernetes.io/env == "int-dev")

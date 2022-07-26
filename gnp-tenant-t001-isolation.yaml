@@ -1,0 +1,34 @@
+apiVersion: projectcalico.org/v3
+kind: GlobalNetworkPolicy
+metadata:
+  name: ingress-int-dev-t001
+spec:
+  order: 101
+  namespaceSelector: (sec.kubernetes.io/tenant == "t001" && sec.kubernetes.io/env == "int-dev" && app.kubernetes.io/ingress-access == "true")
+  selector: app.kubernetes.io/ingress-access == "true"
+  types:
+    - Ingress
+  ingress:
+    - action: Allow
+      source:
+        selector: eep.kubernetes.io/load-balancer == "t001-lb"
+---
+apiVersion: projectcalico.org/v3
+kind: GlobalNetworkPolicy
+metadata:
+  name: egress-int-dev-t001
+spec:
+  order: 102
+  namespaceSelector: (sec.kubernetes.io/tenant == "t001" && sec.kubernetes.io/env == "int-dev")
+  types:
+    - Egress
+  egress:
+    - action: Allow
+      destination:
+        selector: k8s-app == "kube-dns"
+    - action: Allow
+      destination:
+        namespaceSelector: (sec.kubernetes.io/tenant == "t001" && sec.kubernetes.io/env == "int-dev")
+    - action: Allow
+      destination:
+        selector: eep.kubernetes.io/trusted-destination == "int-dev-t001-destinations"

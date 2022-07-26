@@ -1,0 +1,118 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: multitool-global
+    sec.kubernetes.io/tenant: global
+    sec.kubernetes.io/env: int-dev
+    sec.kubernetes.io/compliance: none
+    app.kubernetes.io/name: example-app-1-global
+    app.kubernetes.io/instance: app-1-a1
+    app.kubernetes.io/version: "1.0"
+    app.kubernetes.io/service: app-1-svc-name
+    app.kubernetes.io/tier: frontend
+  name: multitool-global
+spec:
+  containers:
+    - image: wbitt/network-multitool
+      name: multitool
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: multitool-t001
+    sec.kubernetes.io/tenant: t001
+    sec.kubernetes.io/env: int-dev
+    sec.kubernetes.io/compliance: none
+    app.kubernetes.io/name: example-app-2-t001
+    app.kubernetes.io/instance: app-2-a1
+    app.kubernetes.io/version: "1.0"
+    app.kubernetes.io/service: app-2-svc-name
+    app.kubernetes.io/tier: frontend
+  name: multitool-t001
+  namespace: t001-webf-idev-webst-dev
+spec:
+  containers:
+    - image: wbitt/network-multitool
+      name: multitool
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: multitool-t001
+    sec.kubernetes.io/tenant: t001
+    sec.kubernetes.io/env: int-dev
+    sec.kubernetes.io/compliance: none
+    app.kubernetes.io/name: example-app-2-t001
+    app.kubernetes.io/instance: app-2-a1
+    app.kubernetes.io/version: "1.0"
+    app.kubernetes.io/service: app-2-svc-name
+    app.kubernetes.io/tier: frontend
+  name: multitool-t001-pod2
+  namespace: t001-webf-idev-webst-dev
+spec:
+  containers:
+    - image: wbitt/network-multitool
+      name: multitool
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: multitool-t002
+    sec.kubernetes.io/tenant: t002
+    sec.kubernetes.io/env: int-dev
+    sec.kubernetes.io/compliance: none
+    app.kubernetes.io/name: example-app-3-nsa
+    app.kubernetes.io/instance: app-3-a1
+    app.kubernetes.io/version: "2.0"
+    app.kubernetes.io/service: app-3-svc-name
+    app.kubernetes.io/tier: frontend
+  name: multitool-t002
+  namespace: t002-auth-idev-auth-stg
+spec:
+  containers:
+    - image: wbitt/network-multitool
+      name: multitool
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: multitool-t002
+    sec.kubernetes.io/tenant: t002
+    sec.kubernetes.io/env: int-dev
+    sec.kubernetes.io/compliance: none
+    app.kubernetes.io/name: example-app-3-nsa
+    app.kubernetes.io/instance: app-3-a1
+    app.kubernetes.io/version: "2.0"
+    app.kubernetes.io/service: app-3-svc-name
+    app.kubernetes.io/tier: frontend
+  name: multitool-t002-pod2
+  namespace: t002-auth-idev-auth-stg
+spec:
+  containers:
+    - image: wbitt/network-multitool
+      name: multitool
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: multitool-t900
+    sec.kubernetes.io/tenant: t900
+    sec.kubernetes.io/env: shared-services
+    sec.kubernetes.io/compliance: none
+    app.kubernetes.io/name: example-app-3-nsa
+    app.kubernetes.io/instance: app-3-a1
+    app.kubernetes.io/version: "1.0"
+    app.kubernetes.io/service: app-3-svc-name
+    app.kubernetes.io/tier: frontend
+  name: multitool-t900
+  namespace: t900-mntr-ssvc-thanos-prd
+spec:
+  containers:
+    - image: wbitt/network-multitool
+      name: multitool

@@ -1,0 +1,29 @@
+apiVersion: projectcalico.org/v3
+kind: IPPool
+metadata:
+  name: int-dev-pool-10.21.0.0-18
+spec:
+  cidr: 10.21.0.0/18
+  blockSize: 26
+  natOutgoing: true
+  ipipMode: Always
+---
+apiVersion: projectcalico.org/v3
+kind: IPPool
+metadata:
+  name: conf-dev-pool-10.21.64.0-18
+spec:
+  cidr: 10.21.64.0/24
+  blockSize: 26
+  natOutgoing: true
+  ipipMode: Always
+---
+apiVersion: projectcalico.org/v3
+kind: IPPool
+metadata:
+  name: shared-services-pool-10.21.192.0-18
+spec:
+  cidr: 10.21.192.0/24
+  blockSize: 26
+  natOutgoing: true
+  ipipMode: Always

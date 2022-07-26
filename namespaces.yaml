@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: t001-webf-idev-webst-dev
+  labels:
+    sec.kubernetes.io/tenant-id: t001
+    sec.kubernetes.io/environment: int-dev
+    sec.kubernetes.io/compliance: none
+  annotations:
+    cni.projectcalico.org/ipv4pools: '["int-dev-pool-10.21.0.0-18"]'
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: t002-auth-idev-auth-stg
+  labels:
+    sec.kubernetes.io/tenant-id: t002
+    sec.kubernetes.io/environment: int-dev
+    sec.kubernetes.io/compliance: none
+  annotations:
+    cni.projectcalico.org/ipv4pools: '["int-dev-pool-10.21.0.0-18"]'
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: t003-paym-cdev-paym-prod
+  labels:
+    sec.kubernetes.io/tenant-id: t003
+    sec.kubernetes.io/environment: conf-dev
+    sec.kubernetes.io/compliance: none
+  annotations:
+    cni.projectcalico.org/ipv4pools: '["conf-dev-pool-10.21.64.0-18"]'
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: t900-mntr-ssvc-thanos-prd
+  labels:
+    sec.kubernetes.io/tenant-id: t900
+    sec.kubernetes.io/environment: shared-services
+    sec.kubernetes.io/compliance: none
+  annotations:
+    cni.projectcalico.org/ipv4pools: '["shared-services-pool-10.21.192.0-18"]'

@@ -1,0 +1,20 @@
+apiVersion: projectcalico.org/v3
+kind: GlobalNetworkPolicy
+metadata:
+  name: ingress-kubedns
+spec:
+  order: 1
+  selector: k8s-app == "kube-dns"
+  types:
+    - Ingress
+  ingress:
+    - action: Allow
+      destination:
+        ports:
+          - 53
+      protocol: TCP
+    - action: Allow
+      destination:
+        ports:
+          - 53
+      protocol: UDP

@@ -1,0 +1,52 @@
+apiVersion: projectcalico.org/v3
+kind: GlobalNetworkSet
+metadata:
+  name: env-internal-dev
+  labels:
+    sec.kubernetes.io/environment: int-dev
+spec:
+  nets:
+    - 10.21.0.0/18
+---
+apiVersion: projectcalico.org/v3
+kind: GlobalNetworkSet
+metadata:
+  name: env-conf-dev
+  labels:
+    sec.kubernetes.io/environment: conf-dev
+spec:
+  nets:
+    - 10.21.64.0/24
+---
+apiVersion: projectcalico.org/v3
+kind: GlobalNetworkSet
+metadata:
+  name: env-shared-services
+  labels:
+    sec.kubernetes.io/environment: shared-services
+spec:
+  nets:
+    - 10.21.64.0/24
+---
+apiVersion: projectcalico.org/v3
+kind: GlobalNetworkSet
+metadata:
+  name: int-dev-t001-destinations
+  labels:
+    eep.kubernetes.io/trusted-destination: "int-dev-t001-destinations"
+spec:
+  nets:
+    - 172.16.100.0/24
+    - 192.168.1.0/24
+    - 8.8.8.8/32
+---
+apiVersion: projectcalico.org/v3
+kind: GlobalNetworkSet
+metadata:
+  name: t001-lb
+  labels:
+    eep.kubernetes.io/trusted-destination: "t001-lb"
+spec:
+  nets:
+    - 10.10.10.0/24
+---

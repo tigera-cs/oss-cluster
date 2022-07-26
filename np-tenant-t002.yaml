@@ -1,0 +1,28 @@
+apiVersion: projectcalico.org/v3
+kind: NetworkPolicy
+metadata:
+  name: ingress-t002-auth-idev-auth-stg
+  namespace: t002-auth-idev-auth-stg
+spec:
+  order: 1011
+  types:
+    - Ingress
+  ingress:
+    - action: Allow
+      source:
+        selector: (sec.kubernetes.io/tenant == "t002" && sec.kubernetes.io/env == "int-dev")
+---
+apiVersion: projectcalico.org/v3
+kind: NetworkPolicy
+metadata:
+  name: egress-t002-auth-idev-auth-stg
+  namespace: t002-auth-idev-auth-stg
+spec:
+  order: 1012
+  selector: (sec.kubernetes.io/tenant == "t002" && sec.kubernetes.io/env == "int-dev")
+  types:
+    - Egress
+  egress:
+    - action: Allow
+      destination:
+        selector: (sec.kubernetes.io/tenant == "t002" && sec.kubernetes.io/env == "int-dev")

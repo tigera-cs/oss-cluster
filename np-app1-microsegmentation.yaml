@@ -1,0 +1,35 @@
+apiVersion: projectcalico.org/v3
+kind: NetworkPolicy
+metadata:
+  name: ingress-dev-tenant1-app1-svc2
+  namespace: dev-tenant1-app1
+spec:
+  order: 1001
+  selector: (sec.kubernetes.io/tenant == "tenant1" && sec.kubernetes.io/env == "dev" && app.kubernetes.io/name == "app1" && app.kubernetes.io/svc == "svc2")
+  types:
+    - Ingress
+  ingress:
+    - action: Allow
+      source:
+        selector: (sec.kubernetes.io/tenant == "tenant1" && sec.kubernetes.io/env == "dev" && app.kubernetes.io/name == "app1" && app.kubernetes.io/svc == "svc1")
+      destination:
+        ports: 10012
+      protocol: TCP
+---
+apiVersion: projectcalico.org/v3
+kind: NetworkPolicy
+metadata:
+  name: ingress-dev-tenant1-app1-svc3
+  namespace: dev-tenant1-app1
+spec:
+  order: 1002
+  selector: (sec.kubernetes.io/tenant == "tenant1" && sec.kubernetes.io/env == "dev" && app.kubernetes.io/name == "app1" && app.kubernetes.io/svc == "svc3")
+  types:
+    - Ingress
+  ingress:
+    - action: Allow
+      source:
+        selector: (sec.kubernetes.io/tenant == "tenant1" && sec.kubernetes.io/env == "dev" && app.kubernetes.io/name == "app1" && app.kubernetes.io/svc == "svc2")
+      destination:
+        ports: 10023
+      protocol: TCP
