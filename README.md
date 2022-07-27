@@ -229,11 +229,11 @@ spec:
 **GlobalNetworkSets to Include:**
 The following GlobalNetworkSets should include the following addresses and their associated addresses.
 
-| Label                                 | Description                                                                                                                               |   |   |   |   |   |   |   |   |
-|---------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|---|---|---|---|---|---|---|---|
-| eep.kubernetes.io/trusted-destination | Trusted external endpoint destinations for each namespace.                                                                                |   |   |   |   |   |   |   |   |
-| eep.kubernetes.io/load-balancer       | Trusted load balancer for the tenant/namespace/application. This will depend on how the load balancers will be separated for the tenants. |   |   |   |   |   |   |   |   |
-| eep.kubernetes.io/trusted-source      | Trusted sources for ingress rules to a namespace/tenant/host endpoint.                                                                    |   |   |   |   |   |   |   |   |
+| Label                                 | Description                                                                                                                               |
+|---------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
+| eep.kubernetes.io/trusted-destination | Trusted external endpoint destinations for each namespace.                                                                                |
+| eep.kubernetes.io/load-balancer       | Trusted load balancer for the tenant/namespace/application. This will depend on how the load balancers will be separated for the tenants. |
+| eep.kubernetes.io/trusted-source      | Trusted sources for ingress rules to a namespace/tenant/host endpoint.                                                                    |
 
 
 ## Security Policy Design
