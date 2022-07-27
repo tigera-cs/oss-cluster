@@ -178,16 +178,16 @@ Namespaces will be created for each application in the cluster, these namespaces
 Below is an example of a namespace along with the associated labels that resides in tenant 't001', in the 'int-dev' environment with no special compliance requirements. The name is from the above-mentioned formula, in this example the namespace has the following properties:
 
 
-| **Namespace Property**      | Value        | Short ID |   |   |   |   |   |   |   |
-|-----------------------------|--------------|----------|---|---|---|---|---|---|---|
-| **Tenant-ID**               | Tenant 1     | t001     |   |   |   |   |   |   |   |
-| **Tenant Team**             | Web Frontend | webf     |   |   |   |   |   |   |   |
-| **Environment**             | Internal Dev | idev     |   |   |   |   |   |   |   |
-| **Application Name**        | Web store    | webst    |   |   |   |   |   |   |   |
-| **Application Environment** | Production   | prd      |   |   |   |   |   |   |   |
+| **Namespace Property**      | Value        | Short ID |
+|-----------------------------|--------------|----------|
+| **Tenant-ID**               | Tenant 1     | t001     |
+| **Tenant Team**             | Web Frontend | webf     |
+| **Environment**             | Internal Dev | idev     |
+| **Application Name**        | Web store    | webst    |
+| **Application Environment** | Production   | prd      |
 
 
-This results in a namespace name of t001-webf-idev-webst-prd.
+This results in a namespace name of **t001-webf-idev-webst-prd**.
 
 **Namespace Example Manifest:**
 ```yaml
